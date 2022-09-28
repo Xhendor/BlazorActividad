@@ -1,0 +1,59 @@
+﻿@page "/calculadora"
+
+@using EjemploAssemblyAppNet.Shared
+@inject HttpClient Http
+@using System.Text.Json;
+
+<h3>Calculator</h3>
+
+<EditForm Model="@operacion" OnSubmit="HandleValidSubmit">
+
+    <InputNumber @bind-Value="operacion.NumeroA" />
+    <InputNumber @bind-Value="operacion.NumeroB" />
+    <InputNumber @bind-Value="operacion.Resultado" />
+    <InputSelect @bind-Value="operacion.OperacionAritmetica">
+        <option value="">Seleccione la operacion deseada...</option>
+        <option value="+">Suma</option>
+        <option value="-">Resta</option>
+        <option value="*">Multiplicacion</option>
+        <option value="/">Division</option>
+    </InputSelect>
+
+    <button type="submit">Enviar datos</button>
+
+</EditForm>
+
+@code {
+    Operacion operacion = new Operacion();
+
+    public async Task  HandleValidSubmit()
+    {
+        string json=JsonSerializer.Serialize(operacion);
+
+        HttpResponseMessage response =
+        await Http.PostAsJsonAsync("op",operacion);
+
+        
+
+        if (response.IsSuccessStatusCode) {
+
+          operacion= await response.Content.ReadFromJsonAsync<Operacion>();
+        }
+
+
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

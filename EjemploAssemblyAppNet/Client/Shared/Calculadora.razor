@@ -1,0 +1,27 @@
+﻿@using EjemploAssemblyAppNet.Shared
+@inject HttpClient Http
+
+<h3>Calculadora</h3>
+<input id="numero1" name="txtWord" placeholder="Enter your text"
+       value="@numberA" />
+
+<input id="numero2" name="txtWord" placeholder="Enter your text"
+       value="@numberB" />
+
+
+
+
+@code {
+
+    private Operacion operacion;
+    private int numberA;
+    private int numberB;
+    private string operacionToDO;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        operacion = await Http.GetFromJsonAsync<Operacion>("op/5/5/+");
+    }
+
+}
