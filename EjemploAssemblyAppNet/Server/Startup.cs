@@ -1,7 +1,10 @@
+using EjemploAssemblyAppNet.Server.Database;
+using EjemploAssemblyAppNet.Server.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +28,11 @@ namespace EjemploAssemblyAppNet.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            //services.AddDbContext<ProductDbContext>(options => {
+
+            //    options.UseSqlite("Data Source = Products.db");
+            //});
+            //services.AddScoped<ProductServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,7 +10,8 @@
 
     <InputNumber @bind-Value="operacion.NumeroA" />
     <InputNumber @bind-Value="operacion.NumeroB" />
-    <InputNumber @bind-Value="operacion.Resultado" />
+   @* <InputNumber @bind-Value="operacion.Resultado" />*@
+    <label>Resultado: @operacion.Resultado</label>
     <InputSelect @bind-Value="operacion.OperacionAritmetica">
         <option value="">Seleccione la operacion deseada...</option>
         <option value="+">Suma</option>
@@ -33,7 +34,6 @@
         HttpResponseMessage response =
         await Http.PostAsJsonAsync("op",operacion);
 
-        
 
         if (response.IsSuccessStatusCode) {
 

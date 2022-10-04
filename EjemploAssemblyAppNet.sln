@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32602.291
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EjemploAssemblyAppNet.Server", "EjemploAssemblyAppNet\Server\EjemploAssemblyAppNet.Server.csproj", "{0A152D68-72D1-4E64-B269-DADFD5B17B4E}"
 EndProject

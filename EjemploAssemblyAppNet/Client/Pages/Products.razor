@@ -1,0 +1,48 @@
+﻿@page "/products"
+@inject HttpClient Http
+@using EjemploAssemblyAppNet.Shared
+
+
+<h3>Products</h3>
+@if (products == null)
+
+{
+<p><em>Loading...</em></p>
+}
+else
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product producto in products)
+        {
+            <tr>
+                <td>@producto.Id</td>
+                <td>@producto.Name</td>
+                <td>@producto.Price</td>
+                <td>@producto.Description</td>
+                <td>@producto.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+@code {
+
+
+    private Product[] products;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await Http.GetFromJsonAsync<Product[]>("api/Product");
+    }
+}
